@@ -1,7 +1,7 @@
 {
-  "name": "conventional-changelog-keepachangelog",
+  "name": "conventional-changelog-stalinkay",
   "version": "1.5.0",
-  "description": "conventional-changelog keepachangelog preset",
+  "description": "conventional-changelog stalinkay preset",
   "main": "index.js",
   "scripts": {
     "lint": "jshint *.js --exclude node_modules && jscs *.js",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://stalinkay/conventional-changelog-keepachangelog.git"
+    "url": "git+https://github.com/stalinkay/conventional-changelog.git"
   },
   "keywords": [
     "conventional-changelog",
-    "keepachangelog",
+    "stalinkay",
     "preset"
   ],
   "files": [
@@ -24,9 +24,9 @@
   "author": "Stalin Kay",
   "license": "ISC",
   "bugs": {
-    "url": "https://stalinkay/conventional-changelog-keepachangelog/issues"
+    "url": "https://github.com/stalinkay/conventional-changelog/issues"
   },
-  "homepage": "https://stalinkay/conventional-changelog-keepachangelog#readme",
+  "homepage": "https://github.com/stalinkay/conventional-changelog#readme",
   "devDependencies": {
     "better-than-before": "^1.0.0",
     "chai": "^3.4.1",

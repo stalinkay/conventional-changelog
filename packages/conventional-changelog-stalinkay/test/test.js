@@ -24,6 +24,9 @@ betterThanBefore.setups([
     gitDummyCommit(['perf(ngOptions): make it faster', ' closes #1, #2']);
     gitDummyCommit('revert(ngOptions): bad commit');
     gitDummyCommit('fix(*): oops');
+    gitDummyCommit('deprecate(*): create new module');
+    gitDummyCommit('enhance(*): change feature');
+    gitDummyCommit('secure(*): login feature');
   },
   function() {
     gitDummyCommit(['feat(awesome): addresses the issue brought up in #133']);
@@ -32,7 +35,7 @@ betterThanBefore.setups([
     gitDummyCommit(['feat(awesome): fix #88']);
   },
   function() {
-    gitDummyCommit(['feat(awesome): issue brought up by @bcoe! on Friday']);
+    gitDummyCommit(['feat(awesome): issue brought up by @stalinkay! on Friday']);
   },
   function() {
     gitDummyCommit(['docs(readme): make it clear', 'BREAKING CHANGE: The Change is huge.']);
@@ -49,7 +52,7 @@ betterThanBefore.setups([
     gitDummyCommit('feat: some more features');
   },
   function() {
-    gitDummyCommit(['feat(*): implementing #5 by @dlmr', ' closes #10']);
+    gitDummyCommit(['feat(*): implementing #5 by @stalinkay', ' closes #10']);
   },
   function() {
     gitDummyCommit(['fix: use npm@5 (@username)']);
@@ -72,13 +75,15 @@ describe('angular preset', function() {
         expect(chunk).to.include('amazing new module');
         expect(chunk).to.include('**compile:** avoid a bug');
         expect(chunk).to.include('make it faster');
-        expect(chunk).to.include(', closes [#1](https://github.com/conventional-changelog/conventional-changelog-angular/issues/1) [#2](https://github.com/conventional-changelog/conventional-changelog-angular/issues/2)');
+        expect(chunk).to.include(', closes [#1](https://github.com/stalinkay/conventional-changelog-angular/issues/1) [#2](https://github.com/stalinkay/conventional-changelog-angular/issues/2)');
         expect(chunk).to.include('Not backward compatible.');
         expect(chunk).to.include('**compile:** The Change is huge.');
-        expect(chunk).to.include('Features');
-        expect(chunk).to.include('Bug Fixes');
-        expect(chunk).to.include('Performance Improvements');
-        expect(chunk).to.include('Reverts');
+        expect(chunk).to.include('Added');
+        expect(chunk).to.include('Fixed');
+        expect(chunk).to.include('Security');
+        expect(chunk).to.include('Deprecated');
+        expect(chunk).to.include('Performance Improved');
+        expect(chunk).to.include('Removed');
         expect(chunk).to.include('bad commit');
         expect(chunk).to.include('BREAKING CHANGES');
 
@@ -105,7 +110,7 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#133](https://github.com/conventional-changelog/conventional-changelog-angular/issues/133)');
+        expect(chunk).to.include('[#133](https://github.com/stalinkay/conventional-changelog-angular/issues/133)');
         done();
       }));
   });
@@ -121,8 +126,8 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
-        expect(chunk).to.not.include('closes [#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
+        expect(chunk).to.include('[#88](https://github.com/stalinkay/conventional-changelog-angular/issues/88)');
+        expect(chunk).to.not.include('closes [#88](https://github.com/stalinkay/conventional-changelog-angular/issues/88)');
         done();
       }));
   });
@@ -138,7 +143,7 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[@bcoe](https://github.com/bcoe)');
+        expect(chunk).to.include('[@stalinkay](https://github.com/stalinkay)');
         done();
       }));
   });
@@ -155,11 +160,11 @@ describe('angular preset', function() {
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
 
-        expect(chunk).to.include('Documentation');
-        expect(chunk).to.include('Styles');
-        expect(chunk).to.include('Code Refactoring');
-        expect(chunk).to.include('Tests');
-        expect(chunk).to.include('Chores');
+        expect(chunk).to.include('Documented');
+        expect(chunk).to.include('Styled');
+        expect(chunk).to.include('Code Refactored');
+        expect(chunk).to.include('Tested');
+        expect(chunk).to.include('Chored');
 
         done();
       }));
@@ -251,9 +256,9 @@ describe('angular preset', function() {
       .pipe(through(function(chunk, enc, cb) {
         chunk = chunk.toString();
 
-        expect(chunk).to.include('(https://github.com/conventional-changelog/example/compare');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/example/commit/');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/example/issues/');
+        expect(chunk).to.include('(https://github.com/stalinkay/example/compare');
+        expect(chunk).to.include('](https://github.com/stalinkay/example/commit/');
+        expect(chunk).to.include('](https://github.com/stalinkay/example/issues/');
 
         i++;
         cb();
@@ -276,9 +281,9 @@ describe('angular preset', function() {
       .pipe(through(function(chunk, enc, cb) {
         chunk = chunk.toString();
 
-        expect(chunk).to.include('(https://github.com/conventional-changelog/conventional-changelog-angular/compare');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/commit/');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/issues/');
+        expect(chunk).to.include('(https://github.com/stalinkay/conventional-changelog-angular/compare');
+        expect(chunk).to.include('](https://github.com/stalinkay/conventional-changelog-angular/commit/');
+        expect(chunk).to.include('](https://github.com/stalinkay/conventional-changelog-angular/issues/');
 
         i++;
         cb();
@@ -303,7 +308,7 @@ describe('angular preset', function() {
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
 
-        expect(chunk).to.include('(https://github.internal.example.com/dlmr');
+        expect(chunk).to.include('(https://github.internal.example.com/stalinkay');
         expect(chunk).to.include('(https://github.internal.example.com/conventional-changelog/internal/compare');
         expect(chunk).to.include('](https://github.internal.example.com/conventional-changelog/internal/commit/');
         expect(chunk).to.include('5](https://github.internal.example.com/conventional-changelog/internal/issues/5');

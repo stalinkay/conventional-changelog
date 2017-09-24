@@ -28,10 +28,14 @@ var writerOpts = {
 
     if (commit.type === 'feat') {
       commit.type = 'Added';
+    } else if (commit.type === 'enhance') {
+      commit.type = 'Changed';
     } else if (commit.type === 'fix') {
       commit.type = 'Fixed';
     } else if (commit.type === 'perf') {
-      commit.type = 'Improved';
+      commit.type = 'Performance Improved';
+    } else if (commit.type === 'deprecate') {
+      commit.type = 'Deprecated';
     } else if (commit.type === 'revert') {
       commit.type = 'Removed';
     } else if (discard) {
@@ -46,6 +50,8 @@ var writerOpts = {
       commit.type = 'Tested';
     } else if (commit.type === 'chore') {
       commit.type = 'Chored';
+    } else if (commit.type === 'secure') {
+      commit.type = 'Security';
     }
 
     if (commit.scope === '*') {
